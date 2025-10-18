@@ -45,7 +45,7 @@
 - Season (время года)
 
   Связи
-Sales[ProductID] - Products[ProductID]  (1 ко многим)  
-Sales[StoreID] - Stores[StoreID]  (1 ко многим)
-Sales[CustomerID] - Customers[CustomerID]  (1 ко многим)
-Sales[Date] - Calendar[Date]  (1 ко многим)
+- Sales[ProductID] - Products[ProductID]  (1 ко многим)  
+- Sales[StoreID] - Stores[StoreID]  (1 ко многим)
+- Sales[CustomerID] - Customers[CustomerID]  (1 ко многим)
+- Sales[Date] - Calendar[Date]  (1 ко многим)
