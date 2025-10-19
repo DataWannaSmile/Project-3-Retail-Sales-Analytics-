@@ -19,7 +19,7 @@ n_sales = 25000
 start_date = datetime(2022, 1, 1)
 end_date = datetime(2024, 12, 31)
 
-print("Генерация БОЛЬШОГО объема данных начата...")
+
 start_time = time.time()
 
 # 1. Генерация таблицы продуктов
@@ -50,7 +50,7 @@ def generate_products(n):
         subcategory = random.choice(categories[category])
         brand = random.choice(product_brands[category])
         
-        # Разная логика цены в зависимости от категории
+        
         if category == 'Электроника':
             cost_price = round(random.uniform(5000, 150000), 2)
             markup = random.uniform(1.1, 1.4)
@@ -81,7 +81,7 @@ def generate_products(n):
     
     return pd.DataFrame(products)
 
-# 2. Генерация таблицы магазинов (ИСПРАВЛЕННАЯ ВЕРСИЯ)
+# 2. Генерация таблицы магазинов 
 def generate_stores(n):
     cities_regions = {
         'Москва': 'Центральный регион',
@@ -113,7 +113,7 @@ def generate_stores(n):
         formats = ['Гипермаркет', 'Супермаркет', 'Магазин у дома', 'Торговый центр']
         store_format = random.choice(formats)
         
-        # ИСПРАВЛЕННАЯ СТРОКА: используем datetime объекты вместо строк
+        
         open_date = fake.date_between_dates(
             date_start=datetime.now() - timedelta(days=7*365),  # 7 лет назад
             date_end=datetime.now() - timedelta(days=365)       # 1 год назад
@@ -131,7 +131,7 @@ def generate_stores(n):
     
     return pd.DataFrame(stores)
 
-# 3. Генерация таблицы клиентов (ИСПРАВЛЕННАЯ ВЕРСИЯ)
+# 3. Генерация таблицы клиентов 
 def generate_customers(n):
     customers = []
     loyalty_levels = ['Обычный', 'Серебряный', 'Золотой', 'Платиновый']
@@ -265,29 +265,14 @@ def generate_calendar(start_date, end_date):
     return pd.DataFrame(calendar)
 
 # ГЕНЕРАЦИЯ ДАННЫХ
-print("Генерация продуктов...")
+
 products_df = generate_products(n_products)
-
-print("Генерация магазинов...")
 stores_df = generate_stores(n_stores)
-
-print("Генерация клиентов...")
 customers_df = generate_customers(n_customers)
-
-print("Генерация продаж...")
 sales_df = generate_sales(n_sales, products_df, stores_df, customers_df, start_date, end_date)
-
-print("Генерация календаря...")
 calendar_df = generate_calendar(start_date, end_date)
-
-# Сохранение в CSV файлы
-print("Сохранение в CSV файлы...")
-products_df.to_csv(r'C:\Users\maxbu\OneDrive\Desktop\Проекты\Аналитика\Проект 3\retail_products_large.csv', index=False, encoding='utf-8-sig')
-stores_df.to_csv(r'C:\Users\maxbu\OneDrive\Desktop\Проекты\Аналитика\Проект 3\retail_stores_large.csv', index=False, encoding='utf-8-sig')
-customers_df.to_csv(r'C:\Users\maxbu\OneDrive\Desktop\Проекты\Аналитика\Проект 3\'retail_customers_large.csv', index=False, encoding='utf-8-sig')
-sales_df.to_csv(r'C:\Users\maxbu\OneDrive\Desktop\Проекты\Аналитика\Проект 3\'retail_sales_large.csv', index=False, encoding='utf-8-sig')
-calendar_df.to_csv(r'C:\Users\maxbu\OneDrive\Desktop\Проекты\Аналитика\Проект 3\'retail_calendar_large.csv', index=False, encoding='utf-8-sig')
 
 end_time = time.time()
 execution_time = end_time - start_time
+
 
